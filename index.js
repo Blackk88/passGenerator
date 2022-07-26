@@ -28,9 +28,19 @@ document.getElementById("pass-strength-vstrong").addEventListener("change", func
     symbolsCheck.checked = true
 })
 
+// Limitation for length of password
+document.getElementById("input-lentgth").addEventListener('input', function (evt) {
+    if (this.value < 0) {
+        this.value = 0
+    } else if (this.value > 16) {
+        this.value = 16
+    }
+});
+
 // Generate new password 
 
 document.getElementById("test").addEventListener("click", function(){
+    document.getElementById("instruction").textContent = "Click to copy"
     passOutput.textContent = ""
     let charNew = []
     let symbolsArr = []
@@ -54,8 +64,22 @@ document.getElementById("test").addEventListener("click", function(){
     for (let i = 0; i <= inputLength.value; i++) {
         const randomIndex = Math.floor(Math.random()*charNew.length)
         passOutput.textContent += charNew[randomIndex]
-
     }
 })
+
+// Copy to clipboard
+
+document.getElementById("output").addEventListener("click", function(event){
+    copyToClipboard();
+})
+
+function copyToClipboard() {
+    var copyText = document.getElementById("password").textContent;
+    navigator.clipboard.writeText(copyText).then(() => {
+    document.getElementById("instruction").textContent = "Copied";
+    });
+  }
+
+
 
 

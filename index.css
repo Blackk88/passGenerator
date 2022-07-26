@@ -103,9 +103,19 @@ input[type="checkbox"] {
     background: #5bc0be;
 }
 
-.output {
-    height: 50px;
-    background: white;
-    color: black;
+#output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em auto ;
+    width: 75%;
+    background: #3a506b;
+    color: #5bc0be;
+    border: 1px solid #5bc0be;
+    border-radius: 5px;
+    
 }
 
+#output:hover {
+    background: #567192;
+}
