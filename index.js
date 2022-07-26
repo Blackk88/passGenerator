@@ -60,13 +60,16 @@ document.getElementById("test").addEventListener("click", function(){
         
     }
 
+    if (charNew[0] === undefined) {
+        passOutput.textContent = "Choose symbols for your password"
+    } else {
+
     // Generate password
     for (let i = 0; i <= inputLength.value; i++) {
         const randomIndex = Math.floor(Math.random()*charNew.length)
         passOutput.textContent += charNew[randomIndex]
-    }
+    }}
 })
-
 // Copy to clipboard
 
 document.getElementById("output").addEventListener("click", function(event){
