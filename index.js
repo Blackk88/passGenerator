@@ -1,35 +1,61 @@
-let passOne = document.getElementById("pass1")
-let passTwo = document.getElementById("pass2")
+import {charactersNew, inputLength, uppercaseCheck, lowercaseCheck, numbersCheck, symbolsCheck, passOutput} from "./data.js"
 
 
+// 
+// Setting strenght of password 
+// 
+document.getElementById("pass-strength-avg").addEventListener("change", function(){
+    inputLength.value = "8"
+    uppercaseCheck.checked = true
+    lowercaseCheck.checked = true
+    numbersCheck.checked = false
+    symbolsCheck.checked = false
+})
 
-const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
-"/"];
+document.getElementById("pass-strength-strong").addEventListener("change", function(){
+    inputLength.value = "12"
+    uppercaseCheck.checked = true
+    lowercaseCheck.checked = true
+    numbersCheck.checked = true
+    symbolsCheck.checked = false
+})
 
+document.getElementById("pass-strength-vstrong").addEventListener("change", function(){
+    inputLength.value = "16"
+    uppercaseCheck.checked = true
+    lowercaseCheck.checked = true
+    numbersCheck.checked = true
+    symbolsCheck.checked = true
+})
 
+// Generate new password 
 
-function generatePass() {
-    let length = document.getElementById("pass-length").value
-    if (length > 20) {
-        length = 20
-        document.getElementById("pass-length").value = 20
-    } else if (length < 0) {
-        length = 0
-        document.getElementById("pass-length").value = 0
+document.getElementById("test").addEventListener("click", function(){
+    passOutput.textContent = ""
+    let charNew = []
+    let symbolsArr = []
+
+    // Create array of checked checkbox value
+    let symbolsChecked = document.querySelectorAll('.pass-param-checkbox input:checked');
+    for (let i = 0; i < symbolsChecked.length; i++) {
+    
+        if (symbolsChecked[i].checked === true) {
+            symbolsArr.push(symbolsChecked[i].value)
+        }
     }
-    passOne.textContent = null
-    passTwo.textContent = null
-    for (i = 0; i < length; i++) {
-    let random = Math.floor(Math.random() * characters.length)
-    let random2 = Math.floor(Math.random() * characters.length)
-    passOne.textContent += characters[random]
-    passTwo.textContent += characters[random2]
-    }
-}
 
-function copy(clicked_id) {
-    let id = clicked_id
-    var copyText = document.getElementById(id).textContent
-    navigator.clipboard.writeText(copyText)
-    alert("Pass coppied to clipboard")
-}
+    // Creating new array of chosen symbols
+    for (let i = 0; i < symbolsArr.length; i++) {
+        charNew = charNew.concat(charactersNew[symbolsArr[i]])
+        
+    }
+
+    // Generate password
+    for (let i = 0; i <= inputLength.value; i++) {
+        const randomIndex = Math.floor(Math.random()*charNew.length)
+        passOutput.textContent += charNew[randomIndex]
+
+    }
+})
+
+

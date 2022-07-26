@@ -1,25 +1,82 @@
 <!DOCTYPE html>
+<html land="en">
+
     <head>
+        <meta charset="UTF-8">
+        <meta nane="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Password Generator</title>
         <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;800&display=swap" rel="stylesheet">
     </head>
+
     <body>
-        <div class="main" id="inverse">
-            <h1>Generate a <span id="password">random password </span></h1>
-            <p id="warning">Never use an insecure password again</p>
-                <div id="generate-pass">
-                    <input type="number" placeholder="Length of pass" id="pass-length" min="0" max="20">  
-                    <button id="generatePass" onclick="generatePass()">Generate password</button>
+        <div class="main-container">
+
+            <!-- Title -->
+            <div class="title">
+                <h1>Generate <strong>a random password</strong></h1>
+                <p >Never use an insecure password again</p>
+            </div>
+
+            <!-- Password parameters -->
+            
+            <h2>Strength of the password</h2>
+            <div class="input-pass-strength">
+
+                    <label for="pass-strength-avg">
+                        Avarage<input id="pass-strength-avg" type="radio" name="pass-strength">
+                    </label>
+                    
+                    <label for="pass-strength-strong">
+                        Strong<input id="pass-strength-strong"type="radio" name="pass-strength" checked>
+                    </label>
+                    
+                    <label for="pass-strength-vstrong">Very strong
+                        <input id="pass-strength-vstrong" type="radio" name="pass-strength">
+                    </label>
+                <!-- <p>Password parameters</p> -->
+                <!-- <label for="pass-length">Length of password</label> -->
+                <!-- <input type="number" id="pass-length" min="8" max="20">  -->
+            </div>
+
+            <h2>Password parameters</h2>
+            <div class="password-parameters">
+
+                <label>Length of password (8-16):
+                    <input id="input-lentgth" type="number" min="8" max="16" value="12">
+                </label>
+
+                <div class="pass-param-checkbox">
+                    <label>Uppercase
+                        <input id="checkbox-uppercase" type="checkbox" checked value="uppercase">
+                    </label>
+
+                    <label>Lowercase
+                        <input id="checkbox-lowercase" type="checkbox" checked value="lowercase">
+                    </label>
+        
+                    <label>Numbers
+                        <input id="checkbox-numbers" type="checkbox" checked value="numbers">
+                    </label>
+                
+                    <label>Symbols
+                        <input id="checkbox-symbols" type="checkbox" value="symbols">
+                    </label>
                 </div>
-            <div class="line"></div>
+            </div>
+                     
+            <!-- Generate password button -->
+            <button class="btn generate-pass-btn" id="test">Generate password</button>
+            
+            <!-- Password output -->
             <div class="output">
-                <div id="outputbox">
-                     <p id="pass1" onclick="copy(this.id)"></p>
-                </div>
-                <div id="outputbox">
-                     <p id="pass2" onclick="copy(this.id)"></p>
-                </div>
+                <p id="password" onclick="copy(this.id)"></p>
             </div> 
-            <script src="index.js"></script> 
+            
         </div>
+
+        <script src="index.js" type="module"></script> 
     </body>
 </html>
