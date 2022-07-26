@@ -30,8 +30,8 @@ document.getElementById("pass-strength-vstrong").addEventListener("change", func
 
 // Limitation for length of password
 document.getElementById("input-lentgth").addEventListener('input', function (evt) {
-    if (this.value < 0) {
-        this.value = 0
+    if (this.value < 8) {
+        this.value = 8
     } else if (this.value > 16) {
         this.value = 16
     }
