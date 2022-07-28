@@ -46,7 +46,7 @@ h2 {
     margin: 0 auto;
     padding: 2em 1.5em;
     background: #0b132b;
-    max-width: 500px;
+    max-width: 80vw;
     border: 2px solid #5bc0be;
     border-radius: 15px;
 }
@@ -117,8 +117,8 @@ input[type="checkbox"] {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 375px) {
     .main-container {
-        max-width: 100%
+        max-width: 400px;
     }
 }
