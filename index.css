@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: 'Alegreya Sans', sans-serif; 
@@ -118,4 +114,11 @@ input[type="checkbox"] {
 
 #output:hover {
     background: #567192;
+}
+
+
+@media (max-width: 600px) {
+    .main-container {
+        max-width: 100%
+    }
 }

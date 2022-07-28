@@ -77,8 +77,8 @@ document.getElementById("output").addEventListener("click", function(event){
 })
 
 function copyToClipboard() {
-    var copyText = document.getElementById("password").textContent;
-    navigator.clipboard.writeText(copyText).then(() => {
+    let copyPass = document.getElementById("password").textContent;
+    navigator.clipboard.writeText(copyPass).then(() => {
     document.getElementById("instruction").textContent = "Copied";
     });
   }
