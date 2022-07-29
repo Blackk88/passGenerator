@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Alegreya Sans', sans-serif; 
     font-size: 1.2rem;
     color: white;
@@ -46,7 +47,7 @@ h2 {
     margin: 0 auto;
     padding: 2em 1.5em;
     background: #0b132b;
-    max-width: 80vw;
+    width: 90%;
     border: 2px solid #5bc0be;
     border-radius: 15px;
 }
@@ -104,7 +105,7 @@ input[type="checkbox"] {
     justify-content: center;
     align-items: center;
     margin: 0.5em auto ;
-    width: 75%;
+    width: 60%;
     background: #3a506b;
     color: #5bc0be;
     border: 1px solid #5bc0be;
@@ -117,8 +118,8 @@ input[type="checkbox"] {
 }
 
 
-@media (min-width: 375px) {
+@media only screen and (min-device-width: 500px) {
     .main-container {
-        max-width: 500px;
+        width: 500px;
     }
 }
