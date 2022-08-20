@@ -32,6 +32,7 @@ document.getElementById("strength-strong").addEventListener("change", function()
     lowercaseCheck.checked = true
     numbersCheck.checked = true
     symbolsCheck.checked = true
+    document.querySelector("#label-strong").style.color = "yellow"
 })
 
 // Limitation for length of password
@@ -46,7 +47,6 @@ document.getElementById("input-lentgth").addEventListener('input', function (evt
 // Generate new password 
 
 document.getElementById("test").addEventListener("click", function(){
-    document.getElementById("instruction").textContent = "Click to copy"
     passOutput.textContent = ""
     let charNew = []
     let symbolsArr = []

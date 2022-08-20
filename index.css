@@ -7,6 +7,7 @@ body {
     font-family: 'Alegreya Sans', sans-serif; 
     color: whitesmoke;
     max-width: 90%;
+    text-align: center;
 }
 
 /************** 
@@ -52,31 +53,23 @@ Typography
     Strength of password 
 *************/
 
-.password-strength {
-    margin: 0 auto;
-    text-align: center;
-}
-
 .checkbox--title {
     font-size: 1.75rem;
     color: #ffd500;
     letter-spacing: 1.5px;
-    margin: 2em 0em .25em;
+    margin: 1.5em 0em .25em;
 }
 
 .password-strength--radio {
     display: grid; 
-    grid-template: auto / 1fr 1fr 1fr;
-    justify-items: center;
-    text-align: center;
+    grid-template: auto / repeat(3, 125px);
+    justify-content: center;
     margin: 0;
 
 }
 
 .radio-label {
   font-size: 1.25rem;
-  width: 60px;
-  height: 75px;
   line-height: 2em;
   margin: 0;
 }
@@ -111,10 +104,9 @@ Typography
     transform: scale(1);
   }
 
-
 .generate-password-container {
     text-align: center;
-    margin-top: 2em;
+    /* margin-top: 2em; */
 }
 
 .generate-password-btn {
@@ -126,6 +118,7 @@ Typography
     font-weight: 900;
     font-size: 1.25rem;
     border: none;
+    margin: 2.5em 0 1.5em;
 }
 
 .generate-password-btn:active {
@@ -136,18 +129,8 @@ Typography
     box-shadow: 0 0 30px #ffd500; 
 } 
 
-
-
-
-
-
-
-
-
-
-
 .input-pass-strength {
-    margin-top: 1em;
+    /* margin-top: 1em; */
     display: flex;
     justify-content: space-evenly;
     font-size: 1rem;
@@ -159,10 +142,6 @@ Typography
     padding: 1em;
     border: 1px solid #808080;
 }
-
-
-
-
 
 .pass-param-checkbox {
     margin-top: 1.5em;
@@ -182,15 +161,10 @@ input[type="checkbox"] {
     vertical-align: middle;
   }
 
-
-
-
-/* #output:hover {
-    background: #567192;
-} */
-
 .output-wrapper {
     display: flex;
+    justify-content: space-around;
+    /* margin-top: 3em; */
 
 }
 
@@ -198,9 +172,8 @@ input[type="checkbox"] {
 #output2 {
     display: flex;
     justify-content: space-between;
-    padding: 0 1.25em;
     align-items: center;
-    margin: 0 auto;
+    padding: 0 1.25em;
     min-width: 200px;
     max-width: content;
     height: 50px;
