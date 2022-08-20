@@ -1,11 +1,13 @@
 import characters from "./data.js"
 
+
 const inputLength = document.getElementById("input-lentgth")
 const uppercaseCheck = document.getElementById("checkbox-uppercase")
 const lowercaseCheck = document.getElementById("checkbox-lowercase")
 const numbersCheck = document.getElementById("checkbox-numbers")
 const symbolsCheck = document.getElementById("checkbox-symbols")
-const passOutput = document.getElementById("password")
+const passOutput1 = document.getElementById("password1")
+const passOutput2 = document.getElementById("password2")
 
 // 
 // Setting strenght of password 
@@ -46,8 +48,9 @@ document.getElementById("input-lentgth").addEventListener('input', function (evt
 
 // Generate new password 
 
-document.getElementById("test").addEventListener("click", function(){
-    passOutput.textContent = ""
+document.getElementById("password-generator").addEventListener("click", function(){
+    passOutput1.textContent = ""
+    passOutput2.textContent = ""
     let charNew = []
     let symbolsArr = []
 
@@ -67,30 +70,43 @@ document.getElementById("test").addEventListener("click", function(){
     }
 
     if (charNew[0] === undefined) {
-        passOutput.textContent = "Select symbols for your password"
+        passOutput1.textContent = "Select symbols for your password"
     } else {
 
     // Generate password
     for (let i = 0; i <= inputLength.value; i++) {
         const randomIndex = Math.floor(Math.random()*charNew.length)
-        passOutput.textContent += charNew[randomIndex]
-        // passOutput2.textContent += charNew[randomIndex]
+        const randomIndex2 = Math.floor(Math.random()*charNew.length)
+        passOutput1.textContent += charNew[randomIndex]
+        passOutput2.textContent += charNew[randomIndex2]
     }}
 })
-// Copy to clipboard
 
-document.getElementById("copy-to-clipboard").addEventListener("click", function(event){
-    copyToClipboard();
+
+//* Copy to clipboard
+
+let copyBtn = document.querySelectorAll(".fa-copy")
+
+copyBtn.forEach(item => {
+    item.addEventListener("click", event => {
+        let myId = event.target.id
+        copyToClipboard(myId)
+    })
 })
 
-function copyToClipboard() {
-    let copyPass = document.getElementById("password").textContent;
+function copyToClipboard(elemId) {
+    console.log(typeof elemId)
+    
+    let copyPass = document.getElementById(`password${elemId}`).textContent;
     navigator.clipboard.writeText(copyPass)
     
-    passOutput.textContent = "Copied"
-    setTimeout(() => passOutput.textContent = copyPass, 300)
-    
-        // .then(() => {document.getElementById("instruction").textContent = "Copied";});
+    if (elemId === "1") {
+        passOutput1.textContent = "Copied"
+        setTimeout(() => passOutput1.textContent = copyPass, 300)
+    }   else if (elemId === "2") {
+        passOutput2.textContent = "Copied"
+        setTimeout(() => passOutput2.textContent = copyPass, 300)
+    }
   }
 
 
