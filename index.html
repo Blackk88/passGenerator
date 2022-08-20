@@ -4,6 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <meta nane="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <script src="https://kit.fontawesome.com/89e255c4f2.js" crossorigin="anonymous"></script>
         <title>Password Generator</title>
         <link rel="stylesheet" href="index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,33 +16,34 @@
 
     <body>
         <div class="main-container">
-
-            <!-- Title -->
-            <div class="title">
-                <h1>Generate <strong>a random password</strong></h1>
-                <p >Never use an insecure password again</p>
-            </div>
-
-            <!-- Password parameters -->
             
-            <h2>Strength of the password</h2>
-            <div class="input-pass-strength">
+            <header>
+                <h1 id="title">Generate <span class="orange text-animation"><br>a random password</span></h1>
+                <p class="text-opacity">Never use an insecure password again</p>
+            </header>
 
-                    <label for="pass-strength-avg">
-                        Avarage<input id="pass-strength-avg" type="radio" name="pass-strength">
-                    </label>
-                    
-                    <label for="pass-strength-strong">
-                        Strong<input id="pass-strength-strong"type="radio" name="pass-strength" checked>
-                    </label>
-                    
-                    <label for="pass-strength-vstrong">Very strong
-                        <input id="pass-strength-vstrong" type="radio" name="pass-strength">
-                    </label>
-            </div>
+            <!-- Strength selector -->
+            
+            <section class="password-strength">
+                    <h2 class="checkbox--title">Strength of the password</h2>
 
-            <h2>Password parameters</h2>
+                    <div class="password-strength--radio">
+                            <label for="strength-weak" class="radio-label">Weak
+                                <input id="strength-weak" type="radio" name="pass-strength" class="strength-radio" />
+                            </label>
+    
+                        <label for="strength-average"  class="radio-label">Average
+                            <input id="strength-average" type="radio" name="pass-strength" class="strength-radio" checked>
+                        </label>
+
+                        <label for="strength-strong"  class="radio-label">Strong
+                            <input id="strength-strong" type="radio" name="pass-strength" class="strength-radio">
+                        </label>
+                    </div>
+            </section>
+
             <div class="password-parameters">
+                <h2>Password parameters</h2>
 
                 <label>Length of password (8-16):
                     <input id="input-lentgth" type="number" min="8" max="16" value="12">
@@ -64,14 +68,26 @@
                 </div>
             </div>
                      
-            <!-- Generate password button -->
-            <button class="btn generate-pass-btn" id="test">Generate password</button>
-            
-            <!-- Password output -->
-            <h2 id="instruction">Click to copy</h2>
-            <div id="output">
-                <p id="password"></p>
-            </div> 
+            <!-- Generate password  -->
+
+            <section class="generate-password-container">
+                <button class="generate-password-btn" id="test">Generate password</button>
+                
+                <h2 id="instruction"></h2>
+
+                <div class="output-wrapper">
+                    <div id="output" title="Click to copy">
+                        <p id="password"></p>
+                        <i class="fa-solid fa-copy" id="copy-to-clipboard"></i>
+                    </div>
+    
+                    <div id="output2" title="Click to copy">
+                        <p id="password2" ></p>
+                        <i class="fa-solid fa-copy" ></i>
+                    </div>
+                </div>
+            </section>
+
         </div>
 
         <script src="index.js" type="module"></script> 

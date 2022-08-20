@@ -1,10 +1,16 @@
-import {charactersNew, inputLength, uppercaseCheck, lowercaseCheck, numbersCheck, symbolsCheck, passOutput} from "./data.js"
+import characters from "./data.js"
 
+const inputLength = document.getElementById("input-lentgth")
+const uppercaseCheck = document.getElementById("checkbox-uppercase")
+const lowercaseCheck = document.getElementById("checkbox-lowercase")
+const numbersCheck = document.getElementById("checkbox-numbers")
+const symbolsCheck = document.getElementById("checkbox-symbols")
+const passOutput = document.getElementById("password")
 
 // 
 // Setting strenght of password 
 // 
-document.getElementById("pass-strength-avg").addEventListener("change", function(){
+document.getElementById("strength-weak").addEventListener("change", function(){
     inputLength.value = "8"
     uppercaseCheck.checked = true
     lowercaseCheck.checked = true
@@ -12,7 +18,7 @@ document.getElementById("pass-strength-avg").addEventListener("change", function
     symbolsCheck.checked = false
 })
 
-document.getElementById("pass-strength-strong").addEventListener("change", function(){
+document.getElementById("strength-average").addEventListener("change", function(){
     inputLength.value = "12"
     uppercaseCheck.checked = true
     lowercaseCheck.checked = true
@@ -20,7 +26,7 @@ document.getElementById("pass-strength-strong").addEventListener("change", funct
     symbolsCheck.checked = false
 })
 
-document.getElementById("pass-strength-vstrong").addEventListener("change", function(){
+document.getElementById("strength-strong").addEventListener("change", function(){
     inputLength.value = "16"
     uppercaseCheck.checked = true
     lowercaseCheck.checked = true
@@ -56,33 +62,36 @@ document.getElementById("test").addEventListener("click", function(){
 
     // Creating new array of chosen symbols
     for (let i = 0; i < symbolsArr.length; i++) {
-        charNew = charNew.concat(charactersNew[symbolsArr[i]])
+        charNew = charNew.concat(characters[symbolsArr[i]])
         
     }
 
     if (charNew[0] === undefined) {
-        passOutput.textContent = "Choose symbols for your password"
+        passOutput.textContent = "Select symbols for your password"
     } else {
 
     // Generate password
     for (let i = 0; i <= inputLength.value; i++) {
         const randomIndex = Math.floor(Math.random()*charNew.length)
         passOutput.textContent += charNew[randomIndex]
+        // passOutput2.textContent += charNew[randomIndex]
     }}
 })
 // Copy to clipboard
 
-document.getElementById("output").addEventListener("click", function(event){
+document.getElementById("copy-to-clipboard").addEventListener("click", function(event){
     copyToClipboard();
 })
 
 function copyToClipboard() {
     let copyPass = document.getElementById("password").textContent;
-    navigator.clipboard.writeText(copyPass).then(() => {
-    document.getElementById("instruction").textContent = "Copied";
-    });
+    navigator.clipboard.writeText(copyPass)
+    
+    passOutput.textContent = "Copied"
+    setTimeout(() => passOutput.textContent = copyPass, 300)
+    
+        // .then(() => {document.getElementById("instruction").textContent = "Copied";});
   }
-
 
 
 
