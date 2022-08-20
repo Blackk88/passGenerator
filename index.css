@@ -55,11 +55,12 @@ Typography
     Select strength of password
 *********************************/
 
-.checkbox--title {
+.checkbox--title,
+#password-parameters--title {
     font-size: 1.75rem;
     color: #ffd500;
-    letter-spacing: 1.5px;
-    margin: 1.5em 0em .25em;
+    letter-spacing: 1.25px;
+    margin: 1.5em 0 0.25em;
 }
 
 .password-strength--radio {
@@ -107,38 +108,30 @@ Typography
   }
 
 /******************************** 
-    Password parameters selection
+    Password parameters section
 *********************************/
 
-.input-pass-strength {
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 1rem;
+#password-parameters--title {
+    margin-bottom: .75em;
 }
 
-.password-parameters {
-    display: none;
-    text-align: center;
-    padding: 1em;
-    border: 1px solid #808080;
-}
+input[type="checkbox"] { 
+    accent-color: #ffd500;
+  }
+
 
 .pass-param-checkbox {
-    margin-top: 1.5em;
+    margin-top: .75em;
 }
-.pass-param-checkbox > label {
-    text-align: center;
-    padding: 0.75em;   
+.password-parameters label {
+    padding: 0.75em;
+    letter-spacing: 1px;   
 }
 
 #input-lentgth {
-    padding: 0.25em;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-    margin-top: -2px;
-    vertical-align: middle;
+    font-size: .75rem;
+    padding: 0.5em 0.5em;
+    background-color: #294ea9;
 }
 
 /******************************** 
@@ -173,13 +166,13 @@ input[type="checkbox"] {
 #output,
 #output2 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 1.25em;
     min-width: 200px;
     max-width: content;
     height: 50px;
-    background: #004280;
+    background: #254799;
     color: #ffd500;
     border: 1px solid #ffd500;
     border-radius: 10px;
@@ -194,6 +187,7 @@ input[type="checkbox"] {
 .fa-copy {
     cursor: pointer;
     display: none;
+    margin-left: auto;
 }
 
 

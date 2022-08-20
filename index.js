@@ -9,36 +9,33 @@ const symbolsCheck = document.getElementById("checkbox-symbols")
 const passOutput1 = document.getElementById("password1")
 const passOutput2 = document.getElementById("password2")
 
-// 
-// Setting strenght of password 
-// 
-document.getElementById("strength-weak").addEventListener("change", function(){
-    inputLength.value = "8"
-    uppercaseCheck.checked = true
-    lowercaseCheck.checked = true
-    numbersCheck.checked = false
-    symbolsCheck.checked = false
-})
 
-document.getElementById("strength-average").addEventListener("change", function(){
-    inputLength.value = "12"
-    uppercaseCheck.checked = true
-    lowercaseCheck.checked = true
-    numbersCheck.checked = true
-    symbolsCheck.checked = false
-})
+/******************************
+ * Setting strenght of password 
+*******************************/ 
+ 
+const radioLabelEl = document.querySelectorAll(".radio-label")
 
-document.getElementById("strength-strong").addEventListener("change", function(){
-    inputLength.value = "16"
+radioLabelEl.forEach(item => item.addEventListener("change", event => {
     uppercaseCheck.checked = true
     lowercaseCheck.checked = true
     numbersCheck.checked = true
     symbolsCheck.checked = true
-    document.querySelector("#label-strong").style.color = "yellow"
-})
+    if (event.target.id === "strength-weak") {
+        numbersCheck.checked = false
+        symbolsCheck.checked = false
+        inputLength.value = "8"
+        
+    }   else if (event.target.id === "strength-average") {
+            symbolsCheck.checked = false
+            inputLength.value = "12"
+    }   else if (event.target.id === "strength-strong") {
+            inputLength.value = "16"
+    }
+}))
 
 // Limitation for length of password
-document.getElementById("input-lentgth").addEventListener('input', function (evt) {
+document.getElementById("input-lentgth").addEventListener('input', function (event) {
     if (this.value < 8) {
         this.value = 8
     } else if (this.value > 16) {
@@ -85,29 +82,19 @@ document.getElementById("password-generator").addEventListener("click", function
 
 //* Copy to clipboard
 
-let copyBtn = document.querySelectorAll(".fa-copy")
-
-copyBtn.forEach(item => {
+document.querySelectorAll(".fa-copy").forEach(item => {
     item.addEventListener("click", event => {
-        let myId = event.target.id
-        copyToClipboard(myId)
+        copyToClipboard(event)
     })
 })
 
-function copyToClipboard(elemId) {
-    console.log(typeof elemId)
-    
-    let copyPass = document.getElementById(`password${elemId}`).textContent;
+function copyToClipboard(element) {
+    let copyPass = document.getElementById(`password${element.target.id}`).textContent;
     navigator.clipboard.writeText(copyPass)
-    
-    if (elemId === "1") {
-        passOutput1.textContent = "Copied"
-        setTimeout(() => passOutput1.textContent = copyPass, 300)
-    }   else if (elemId === "2") {
-        passOutput2.textContent = "Copied"
-        setTimeout(() => passOutput2.textContent = copyPass, 300)
-    }
-  }
+
+    element.path[1].children[0].textContent = "Copied"
+    setTimeout(() => element.path[1].children[0].textContent = copyPass, 300)
+}
 
 
 
